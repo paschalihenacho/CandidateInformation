@@ -1,0 +1,74 @@
+﻿@page "{id:int?}"
+@model CandidateInformation.Pages.Candidates.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add Candidate</h1>
+
+<h4>Candidate</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Candidate.firstName" class="control-label"></label>
+                <input asp-for="Candidate.firstName" class="form-control" />
+                <span asp-validation-for="Candidate.firstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.lastName" class="control-label"></label>
+                <input asp-for="Candidate.lastName" class="form-control" />
+                <span asp-validation-for="Candidate.lastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.email" class="control-label"></label>
+                <input asp-for="Candidate.email" class="form-control" />
+                <span asp-validation-for="Candidate.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.phoneNumber" class="control-label"></label>
+                <input asp-for="Candidate.phoneNumber" class="form-control" />
+                <span asp-validation-for="Candidate.phoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Candidate.zipCode" class="control-label"></label>
+                <input asp-for="Candidate.zipCode" class="form-control" />
+                <span asp-validation-for="Candidate.zipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="Candidate.qualificationType" class="control-label"></label>
+            <input asp-for="Candidate.qualificationType" class="form-control" />
+            <span asp-validation-for="Candidate.qualificationType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Candidate.qualificationName" class="control-label"></label>
+            <input asp-for="Candidate.qualificationName" class="form-control" />
+            <span asp-validation-for="Candidate.qualificationName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Candidate.startDate" class="control-label"></label>
+            <input asp-for="Candidate.startDate" class="form-control" />
+            <span asp-validation-for="Candidate.startDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Candidate.endDate" class="control-label"></label>
+            <input asp-for="Candidate.endDate" class="form-control" />
+            <span asp-validation-for="Candidate.endDate" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,100 @@
+﻿@page "{id:int?}"
+@model CandidateInformation.Pages.Candidates.IndexModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["MenuTitle"] = "Menu";
+    ViewData["IsIndexPage"] = true;
+}
+
+<h1>List of Candidates</h1>
+
+<p>
+    <a asp-page="Create">Add New Candidate</a>
+</p>
+
+<form>
+    <p>
+        Search for Candidates: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                    @Html.DisplayNameFor(model => model.Candidate[0].firstName) 
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LNameSort">
+                    @Html.DisplayNameFor(model => model.Candidate[0].lastName)
+                      </a>
+</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].phoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Candidate[0].zipCode)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Candidate[0].qualificationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate[0].qualificationName)
+        </th>
+        <th>
+            <a asp-page="./Index" asp-route-sortOrder="@Model.SDateSort">
+                @Html.DisplayNameFor(model => model.Candidate[0].startDate)
+                </a>
+           </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Candidate[0].endDate)
+        </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Candidate)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zipCode)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.qualificationType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qualificationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDate)
+        </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <eg-highlight-text text="@Model.Candidate"/>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
